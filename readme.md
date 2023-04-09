@@ -76,16 +76,18 @@ Will result in:
 <a id='snippet-Tests.HandlerTest.verified.txt'></a>
 ```txt
 {
-  Sent: [
+  Calls: [],
+  Deposits: [],
+  Posts: [],
+  Publishes: [],
+  Sends: [
     {
-      Message: {
-        Property: Property Value
-      }
+      Property: Property Value
     }
   ]
 }
 ```
-<sup><a href='/src/Tests/Tests.HandlerTest.verified.txt#L1-L9' title='Snippet source file'>snippet source</a> | <a href='#snippet-Tests.HandlerTest.verified.txt' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Tests.HandlerTest.verified.txt#L1-L11' title='Snippet source file'>snippet source</a> | <a href='#snippet-Tests.HandlerTest.verified.txt' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 

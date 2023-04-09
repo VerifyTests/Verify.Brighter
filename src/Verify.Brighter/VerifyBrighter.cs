@@ -1,12 +1,10 @@
-﻿namespace VerifyTests;
+﻿using Argon;
+
+namespace VerifyTests;
 
 public static class VerifyBrighter
 {
     public static bool Initialized { get; private set; }
-
-    [Obsolete("Use Initialize()")]
-    public static void Enable() =>
-        Initialize();
 
     public static void Initialize()
     {
@@ -16,5 +14,13 @@ public static class VerifyBrighter
         }
 
         Initialized = true;
+        VerifierSettings.AddExtraSettings(_ => _.Converters.AddRange(converters));
     }
+
+    static List<JsonConverter> converters = new()
+    {
+        new RecordingCommandProcessorConverter(),
+        new ClearOutboxRecordConverter(),
+        new CallRecordConverter()
+    };
 }

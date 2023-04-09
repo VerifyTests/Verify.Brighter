@@ -1,58 +1,24 @@
 ﻿{
-  Broardcasted: [
-    {
-      Topic: topic,
-      Message: {
-        Property: Property Value
-      },
-      Options: {
-        DeliverBy: DateTimeOffset_1
-      }
-    }
-  ],
-  Invoked: [
-    {
-      Message: {
-        Property: Property Value
-      },
-      Timeout: 2.00:00:00
-    },
-    {
-      Message: {
-        Property: Property Value
-      },
-      Timeout: 2.00:00:00
-    },
-    {
-      Message: {
-        Property: Property Value
-      },
-      Timeout: 2.00:00:00,
-      Endpoint: endpoint
-    }
-  ],
-  Responses: [
-    {
-      Property: Property Value
-    }
-  ],
-  Sent: [
-    {
-      Message: {
-        Property: Property Value
-      },
-      Options: {
-        DeliverBy: DateTimeOffset_2
-      }
-    },
-    {
-      Message: {
-        Property: Property Value
-      },
-      Options: {
-        DeliverBy: DateTimeOffset_3
-      },
-      Endpoint: endpoint
-    }
-  ]
+  Send: Response: {
+    Property: Send Value
+  },
+  Post: Response: {
+    Property: Post Value
+  },
+  Publish: Response: {
+    Property: Publish Value
+  },
+  Deposit: Response: {
+    Property: Publish Value
+  },
+  Clear: {
+    AmountToClear: 100,
+    MinimumAge: 5000,
+    UseBulk: false
+  },
+  Call: {
+    Request: {},
+    ResponseType: Response,
+    TimeOutInMilliseconds: 10
+  }
 }

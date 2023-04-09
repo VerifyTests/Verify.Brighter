@@ -1,9 +1,5 @@
 ﻿{
-  Sent: [
-    {
-      Message: {
-        Property: Property Value
-      }
-    }
-  ]
+  Send: Response: {
+    Property: Property Value
+  }
 }

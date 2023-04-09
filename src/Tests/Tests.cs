@@ -49,14 +49,26 @@ public class Handler: RequestHandlerAsync<Message>
 
 public class AllHandler : RequestHandlerAsync<Message>
 {
-    RecordingCommandProcessor commandProcessor;
+    RecordingCommandProcessor processor;
 
-    public AllHandler(RecordingCommandProcessor commandProcessor) =>
-        this.commandProcessor = commandProcessor;
+    public AllHandler(RecordingCommandProcessor processor) =>
+        this.processor = processor;
 
     public async Task<Message> Handle(Message message)
     {
-        await commandProcessor.SendAsync(new Response("Property Value"));
+        processor.Send(new Response("Send Value"));
+        processor.Post(new Response("Post Value"));
+        processor.Publish(new Response("Publish Value"));
+        processor.DepositPost(new Response("Publish Value"));
+        processor.ClearOutbox();
+        processor.Call<Call, Response>(new Call(), 10);
         return await base.HandleAsync(message);
     }
+}
+
+public class Call : ICall
+{
+    public Guid Id { get; set; }
+    public Activity Span { get; set; } = null!;
+    public ReplyAddress ReplyAddress { get; } = null!;
 }
