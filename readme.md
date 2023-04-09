@@ -87,4 +87,4 @@ Will result in:
 
 ## Icon
 
-[Wolverine](https://thenounproject.com/term/wolverine/3386573/) designed by [Phạm Thanh Lộc](https://thenounproject.com/thanhloc1009/) from [The Noun Project](https://thenounproject.com/).
+[Cannon](https://thenounproject.com/term/cannon/2181690/) from [The Noun Project](https://thenounproject.com/).
