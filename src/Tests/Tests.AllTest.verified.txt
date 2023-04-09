@@ -19,6 +19,6 @@
   Call: {
     Request: {},
     ResponseType: Response,
-    TimeOutInMilliseconds: 10
+    TimeOut: 10 ms
   }
 }

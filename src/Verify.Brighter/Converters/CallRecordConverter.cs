@@ -6,7 +6,7 @@ class CallRecordConverter :
         writer.WriteStartObject();
         writer.WriteMember(record, record.Request, "Request");
         writer.WriteMember(record, record.ResponseType, "ResponseType");
-        writer.WriteMember(record, record.TimeOutInMilliseconds, "TimeOutInMilliseconds");
+        writer.WriteMember(record, $"{record.TimeOutInMilliseconds} ms", "TimeOut");
         writer.WriteEndObject();
     }
 }
