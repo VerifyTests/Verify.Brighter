@@ -18,7 +18,7 @@ class RecordingCommandProcessorConverter :
                     break;
                 case RecordingCommandProcessor.CommandType.Clear:
                     var clearOutboxRecord = (ClearOutboxRecord) record;
-                    writer.WriteMember(processor, clearOutboxRecord, "Clear");
+                    writer.WriteMember(processor, clearOutboxRecord, "Clear Outbox");
                     break;
                 case RecordingCommandProcessor.CommandType.Call:
                     var callRecord = (CallRecord) record;
