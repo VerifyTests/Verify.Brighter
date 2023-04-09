@@ -4,7 +4,7 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/qwqcg22d7v2awni7?svg=true)](https://ci.appveyor.com/project/SimonCropp/Verify-Brighter)
 [![NuGet Status](https://img.shields.io/nuget/v/Verify.Brighter.svg)](https://www.nuget.org/packages/Verify.Brighter/)
 
-Adds [Verify](https://github.com/VerifyTests/Verify) support for verifying [Brighter](https://www.goparamore.io/) via a custom test context.
+Adds [Verify](https://github.com/VerifyTests/Verify) support for verifying [Brighter](https://www.goparamore.io/).
 
 
 ## NuGet package
