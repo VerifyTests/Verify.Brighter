@@ -4,7 +4,7 @@
     <Version>0.1.0</Version>
     <AssemblyVersion>1.0.0</AssemblyVersion>
     <PackageTags>Brighter, Verify</PackageTags>
-    <Description>Adds Verify (https://github.com/VerifyTests/Verify) support for verifying Brighter (https://www.goparamore.io//)</Description>
+    <Description>Adds Verify (https://github.com/VerifyTests/Verify) support for verifying Brighter (https://www.goparamore.io/)</Description>
     <NoWarn>CS1591;NU5105</NoWarn>
   </PropertyGroup>
 </Project>
