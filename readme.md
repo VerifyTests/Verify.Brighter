@@ -1,4 +1,4 @@
-# <img src="/src/icon.png" height="30px"> Verify.Wolverine
+# <img src="/src/icon.png" height="30px"> Verify.Brighter
 
 [![Discussions](https://img.shields.io/badge/Verify-Discussions-yellow?svg=true&label=)](https://github.com/orgs/VerifyTests/discussions)
 [![Build status](https://ci.appveyor.com/api/projects/status/qwqcg22d7v2awni7?svg=true)](https://ci.appveyor.com/project/SimonCropp/Verify-Brighter)
