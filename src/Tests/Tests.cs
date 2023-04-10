@@ -31,7 +31,8 @@ public class Tests
 
 #region Handler
 
-public class Handler: RequestHandlerAsync<Message>
+public class Handler :
+    RequestHandlerAsync<Message>
 {
     IAmACommandProcessor processor;
 

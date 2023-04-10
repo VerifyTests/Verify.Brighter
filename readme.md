@@ -32,7 +32,8 @@ Given the handler:
 <!-- snippet: Handler -->
 <a id='snippet-handler'></a>
 ```cs
-public class Handler: RequestHandlerAsync<Message>
+public class Handler :
+    RequestHandlerAsync<Message>
 {
     IAmACommandProcessor processor;
 
@@ -50,7 +51,7 @@ public class Handler: RequestHandlerAsync<Message>
     }
 }
 ```
-<sup><a href='/src/Tests/Tests.cs#L32-L52' title='Snippet source file'>snippet source</a> | <a href='#snippet-handler' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Tests.cs#L32-L53' title='Snippet source file'>snippet source</a> | <a href='#snippet-handler' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
