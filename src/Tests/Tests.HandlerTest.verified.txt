@@ -1,5 +1,8 @@
 ﻿{
-  Send: Response: {
-    Property: Property Value
+  Send: MyCommand: {
+    Property: Some data
+  },
+  Publish: MyEvent: {
+    Property: Some other data
   }
 }

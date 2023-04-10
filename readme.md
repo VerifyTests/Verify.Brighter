@@ -34,20 +34,23 @@ Given the handler:
 ```cs
 public class Handler: RequestHandlerAsync<Message>
 {
-    IAmACommandProcessor commandProcessor;
+    IAmACommandProcessor processor;
 
-    public Handler(IAmACommandProcessor commandProcessor) =>
-        this.commandProcessor = commandProcessor;
+    public Handler(IAmACommandProcessor processor) =>
+        this.processor = processor;
 
-    public async Task<Message> Handle(Message message)
+    public override async Task<Message> HandleAsync(
+        Message message,
+        CancellationToken cancellation = default)
     {
-        await commandProcessor.SendAsync(new Response("Property Value"));
+        await processor.SendAsync(new MyCommand("Some data"));
+        await processor.PublishAsync(new MyEvent("Some other data"));
 
         return await base.HandleAsync(message);
     }
 }
 ```
-<sup><a href='/src/Tests/Tests.cs#L31-L48' title='Snippet source file'>snippet source</a> | <a href='#snippet-handler' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Tests.cs#L32-L52' title='Snippet source file'>snippet source</a> | <a href='#snippet-handler' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
@@ -63,11 +66,11 @@ public async Task HandlerTest()
 {
     var context = new RecordingCommandProcessor();
     var handler = new Handler(context);
-    await handler.Handle(new Message("value"));
+    await handler.HandleAsync(new Message("value"));
     await Verify(context);
 }
 ```
-<sup><a href='/src/Tests/Tests.cs#L8-L19' title='Snippet source file'>snippet source</a> | <a href='#snippet-handlertest' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Tests.cs#L9-L20' title='Snippet source file'>snippet source</a> | <a href='#snippet-handlertest' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Will result in:
@@ -76,12 +79,15 @@ Will result in:
 <a id='snippet-Tests.HandlerTest.verified.txt'></a>
 ```txt
 {
-  Send: Response: {
-    Property: Property Value
+  Send: MyCommand: {
+    Property: Some data
+  },
+  Publish: MyEvent: {
+    Property: Some other data
   }
 }
 ```
-<sup><a href='/src/Tests/Tests.HandlerTest.verified.txt#L1-L5' title='Snippet source file'>snippet source</a> | <a href='#snippet-Tests.HandlerTest.verified.txt' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Tests.HandlerTest.verified.txt#L1-L8' title='Snippet source file'>snippet source</a> | <a href='#snippet-Tests.HandlerTest.verified.txt' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 

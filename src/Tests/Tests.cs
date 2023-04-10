@@ -1,6 +1,7 @@
 ﻿using Paramore.Brighter;
 using VerifyTests.Brighter;
 // ReSharper disable ArrangeObjectCreationWhenTypeNotEvident
+// ReSharper disable MethodSupportsCancellation
 
 [UsesVerify]
 public class Tests
@@ -12,7 +13,7 @@ public class Tests
     {
         var context = new RecordingCommandProcessor();
         var handler = new Handler(context);
-        await handler.Handle(new Message("value"));
+        await handler.HandleAsync(new Message("value"));
         await Verify(context);
     }
 
@@ -23,7 +24,7 @@ public class Tests
     {
         var context = new RecordingCommandProcessor();
         var handler = new AllHandler(context);
-        await handler.Handle(new Message("value"));
+        await handler.HandleAsync(new Message("value"));
         await Verify(context);
     }
 }
@@ -32,14 +33,17 @@ public class Tests
 
 public class Handler: RequestHandlerAsync<Message>
 {
-    IAmACommandProcessor commandProcessor;
+    IAmACommandProcessor processor;
 
-    public Handler(IAmACommandProcessor commandProcessor) =>
-        this.commandProcessor = commandProcessor;
+    public Handler(IAmACommandProcessor processor) =>
+        this.processor = processor;
 
-    public async Task<Message> Handle(Message message)
+    public override async Task<Message> HandleAsync(
+        Message message,
+        CancellationToken cancellation = default)
     {
-        await commandProcessor.SendAsync(new Response("Property Value"));
+        await processor.SendAsync(new MyCommand("Some data"));
+        await processor.PublishAsync(new MyEvent("Some other data"));
 
         return await base.HandleAsync(message);
     }
@@ -54,7 +58,7 @@ public class AllHandler : RequestHandlerAsync<Message>
     public AllHandler(RecordingCommandProcessor processor) =>
         this.processor = processor;
 
-    public async Task<Message> Handle(Message message)
+    public override async Task<Message> HandleAsync(Message message, CancellationToken cancellationToken = default)
     {
         processor.Send(new Response("Send Value"));
         processor.Post(new Response("Post Value"));
