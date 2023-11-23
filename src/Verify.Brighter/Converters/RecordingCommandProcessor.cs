@@ -13,5 +13,5 @@ public partial class RecordingCommandProcessor :
         Call
     }
 
-    internal ConcurrentQueue<(CommandType type, object record)> queue = new();
+    internal ConcurrentQueue<(CommandType type, object record)> queue = [];
 }
