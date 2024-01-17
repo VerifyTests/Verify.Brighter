@@ -52,7 +52,7 @@ public class Handler :
     }
 }
 ```
-<sup><a href='/src/Tests/Tests.cs#L32-L53' title='Snippet source file'>snippet source</a> | <a href='#snippet-handler' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Tests.cs#L31-L52' title='Snippet source file'>snippet source</a> | <a href='#snippet-handler' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
@@ -72,7 +72,7 @@ public async Task HandlerTest()
     await Verify(context);
 }
 ```
-<sup><a href='/src/Tests/Tests.cs#L9-L20' title='Snippet source file'>snippet source</a> | <a href='#snippet-handlertest' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Tests.cs#L8-L19' title='Snippet source file'>snippet source</a> | <a href='#snippet-handlertest' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Will result in:
