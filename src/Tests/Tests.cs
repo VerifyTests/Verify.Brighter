@@ -3,7 +3,6 @@ using VerifyTests.Brighter;
 // ReSharper disable ArrangeObjectCreationWhenTypeNotEvident
 // ReSharper disable MethodSupportsCancellation
 
-[UsesVerify]
 public class Tests
 {
     #region HandlerTest
