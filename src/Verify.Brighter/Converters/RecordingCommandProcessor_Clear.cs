@@ -11,7 +11,7 @@ public partial class RecordingCommandProcessor
     public void ClearOutbox(params Guid[] posts) =>
         queue.Enqueue(new(CommandType.Clear, new ClearOutboxRecord(posts)));
 
-    public Task ClearOutboxAsync(IEnumerable<Guid> posts, bool continueOnCapturedContext = false, CancellationToken cancellation = default)
+    public Task ClearOutboxAsync(IEnumerable<Guid> posts, bool continueOnCapturedContext = false, Cancel cancel = default)
     {
         queue.Enqueue(new(CommandType.Clear, new ClearOutboxRecord(posts)));
         return Task.CompletedTask;

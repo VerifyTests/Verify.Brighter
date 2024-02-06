@@ -1,5 +1,4 @@
-﻿using Paramore.Brighter;
-using VerifyTests.Brighter;
+﻿
 // ReSharper disable ArrangeObjectCreationWhenTypeNotEvident
 // ReSharper disable MethodSupportsCancellation
 
@@ -30,17 +29,12 @@ public class Tests
 
 #region Handler
 
-public class Handler :
+public class Handler(IAmACommandProcessor processor) :
     RequestHandlerAsync<Message>
 {
-    IAmACommandProcessor processor;
-
-    public Handler(IAmACommandProcessor processor) =>
-        this.processor = processor;
-
     public override async Task<Message> HandleAsync(
         Message message,
-        CancellationToken cancellation = default)
+        Cancel cancel = default)
     {
         await processor.SendAsync(new MyCommand("Some data"));
         await processor.PublishAsync(new MyEvent("Some other data"));
@@ -51,14 +45,10 @@ public class Handler :
 
 #endregion
 
-public class AllHandler : RequestHandlerAsync<Message>
+public class AllHandler(RecordingCommandProcessor processor) :
+    RequestHandlerAsync<Message>
 {
-    RecordingCommandProcessor processor;
-
-    public AllHandler(RecordingCommandProcessor processor) =>
-        this.processor = processor;
-
-    public override async Task<Message> HandleAsync(Message message, CancellationToken cancellationToken = default)
+    public override Task<Message> HandleAsync(Message message, Cancel cancel = default)
     {
         processor.Send(new Response("Send Value"));
         processor.Post(new Response("Post Value"));
@@ -66,11 +56,12 @@ public class AllHandler : RequestHandlerAsync<Message>
         processor.DepositPost(new Response("Publish Value"));
         processor.ClearOutbox();
         processor.Call<Call, Response>(new Call(), 10);
-        return await base.HandleAsync(message);
+        return base.HandleAsync(message);
     }
 }
 
-public class Call : ICall
+public class Call :
+    ICall
 {
     public Guid Id { get; set; }
     public Activity Span { get; set; } = null!;

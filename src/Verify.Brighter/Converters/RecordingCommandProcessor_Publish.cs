@@ -6,7 +6,7 @@ public partial class RecordingCommandProcessor
         where T : class, IRequest =>
         queue.Enqueue(new(CommandType.Publish, @event));
 
-    public Task PublishAsync<T>(T @event, bool continueOnCapturedContext = false, CancellationToken cancellation = default)
+    public Task PublishAsync<T>(T @event, bool continueOnCapturedContext = false, Cancel cancel = default)
         where T : class, IRequest
     {
         queue.Enqueue(new(CommandType.Publish, @event));

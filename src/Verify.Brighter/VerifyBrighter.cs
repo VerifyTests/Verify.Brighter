@@ -17,10 +17,10 @@ public static class VerifyBrighter
         VerifierSettings.AddExtraSettings(_ => _.Converters.AddRange(converters));
     }
 
-    static List<JsonConverter> converters = new()
-    {
+    static List<JsonConverter> converters =
+    [
         new RecordingCommandProcessorConverter(),
         new ClearOutboxRecordConverter(),
         new CallRecordConverter()
-    };
+    ];
 }

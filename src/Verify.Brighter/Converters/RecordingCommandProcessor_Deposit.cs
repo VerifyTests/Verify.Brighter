@@ -13,11 +13,11 @@ public partial class RecordingCommandProcessor
         where T : class, IRequest =>
         requests.Select(DepositPost).ToArray();
 
-    public Task<Guid> DepositPostAsync<T>(T request, bool continueOnCapturedContext = false, CancellationToken cancellation = default)
+    public Task<Guid> DepositPostAsync<T>(T request, bool continueOnCapturedContext = false, Cancel cancel = default)
         where T : class, IRequest =>
         Task.FromResult(DepositPost(request));
 
-    public Task<Guid[]> DepositPostAsync<T>(IEnumerable<T> requests, bool continueOnCapturedContext = false, CancellationToken cancellation = default)
+    public Task<Guid[]> DepositPostAsync<T>(IEnumerable<T> requests, bool continueOnCapturedContext = false, Cancel cancel = default)
         where T : class, IRequest =>
         Task.FromResult(DepositPost(requests));
 

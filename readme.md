@@ -33,17 +33,12 @@ Given the handler:
 <!-- snippet: Handler -->
 <a id='snippet-handler'></a>
 ```cs
-public class Handler :
+public class Handler(IAmACommandProcessor processor) :
     RequestHandlerAsync<Message>
 {
-    IAmACommandProcessor processor;
-
-    public Handler(IAmACommandProcessor processor) =>
-        this.processor = processor;
-
     public override async Task<Message> HandleAsync(
         Message message,
-        CancellationToken cancellation = default)
+        Cancel cancel = default)
     {
         await processor.SendAsync(new MyCommand("Some data"));
         await processor.PublishAsync(new MyEvent("Some other data"));
@@ -52,7 +47,7 @@ public class Handler :
     }
 }
 ```
-<sup><a href='/src/Tests/Tests.cs#L31-L52' title='Snippet source file'>snippet source</a> | <a href='#snippet-handler' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Tests.cs#L30-L46' title='Snippet source file'>snippet source</a> | <a href='#snippet-handler' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
@@ -72,7 +67,7 @@ public async Task HandlerTest()
     await Verify(context);
 }
 ```
-<sup><a href='/src/Tests/Tests.cs#L8-L19' title='Snippet source file'>snippet source</a> | <a href='#snippet-handlertest' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Tests.cs#L7-L18' title='Snippet source file'>snippet source</a> | <a href='#snippet-handlertest' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Will result in:

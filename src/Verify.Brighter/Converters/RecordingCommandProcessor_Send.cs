@@ -6,7 +6,7 @@ public partial class RecordingCommandProcessor
         where T : class, IRequest =>
         queue.Enqueue(new(CommandType.Send,command));
 
-    public Task SendAsync<T>(T command, bool continueOnCapturedContext = false, CancellationToken cancellation = default)
+    public Task SendAsync<T>(T command, bool continueOnCapturedContext = false, Cancel cancel = default)
         where T : class, IRequest
     {
         queue.Enqueue(new(CommandType.Send, command));
