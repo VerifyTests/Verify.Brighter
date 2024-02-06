@@ -1,5 +1,3 @@
-using SimpleInfoName;
-
 class RecordingCommandProcessorConverter :
     WriteOnlyJsonConverter<RecordingCommandProcessor>
 {
@@ -26,6 +24,7 @@ class RecordingCommandProcessorConverter :
                     break;
             }
         }
+
         writer.WriteEndObject();
     }
 }
