@@ -16,13 +16,13 @@ https://nuget.org/packages/Verify.Brighter/
 ## Usage
 
 <!-- snippet: Enable -->
-<a id='snippet-enable'></a>
+<a id='snippet-Enable'></a>
 ```cs
 [ModuleInitializer]
 public static void Init() =>
     VerifyBrighter.Initialize();
 ```
-<sup><a href='/src/Tests/ModuleInitializer.cs#L3-L9' title='Snippet source file'>snippet source</a> | <a href='#snippet-enable' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/ModuleInitializer.cs#L3-L9' title='Snippet source file'>snippet source</a> | <a href='#snippet-Enable' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
@@ -31,7 +31,7 @@ public static void Init() =>
 Given the handler:
 
 <!-- snippet: Handler -->
-<a id='snippet-handler'></a>
+<a id='snippet-Handler'></a>
 ```cs
 public class Handler(IAmACommandProcessor processor) :
     RequestHandlerAsync<Message>
@@ -47,7 +47,7 @@ public class Handler(IAmACommandProcessor processor) :
     }
 }
 ```
-<sup><a href='/src/Tests/Tests.cs#L30-L46' title='Snippet source file'>snippet source</a> | <a href='#snippet-handler' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Tests.cs#L30-L46' title='Snippet source file'>snippet source</a> | <a href='#snippet-Handler' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
@@ -56,7 +56,7 @@ public class Handler(IAmACommandProcessor processor) :
 Pass in instance of `RecordingMessageContext` in to the `Handle` method and then `Verify` that instance.
 
 <!-- snippet: HandlerTest -->
-<a id='snippet-handlertest'></a>
+<a id='snippet-HandlerTest'></a>
 ```cs
 [Fact]
 public async Task HandlerTest()
@@ -67,7 +67,7 @@ public async Task HandlerTest()
     await Verify(context);
 }
 ```
-<sup><a href='/src/Tests/Tests.cs#L7-L18' title='Snippet source file'>snippet source</a> | <a href='#snippet-handlertest' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Tests.cs#L7-L18' title='Snippet source file'>snippet source</a> | <a href='#snippet-HandlerTest' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Will result in:
