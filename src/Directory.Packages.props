@@ -6,8 +6,8 @@
   <ItemGroup>
     <PackageVersion Include="MarkdownSnippets.MsBuild" Version="27.0.2" />
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.11.0" />
-    <PackageVersion Include="Paramore.Brighter" Version="9.9.4" />
     <PackageVersion Include="ProjectDefaults" Version="1.0.135" />
+    <PackageVersion Include="Paramore.Brighter" Version="9.9.5" />
     <PackageVersion Include="Verify" Version="26.3.1" />
     <PackageVersion Include="Verify.DiffPlex" Version="3.1.0" />
     <PackageVersion Include="Verify.XunitV3" Version="26.2.0-beta.1" />
