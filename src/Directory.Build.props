@@ -6,7 +6,7 @@
     <LangVersion>preview</LangVersion>
     <PackageTags>Brighter, Verify</PackageTags>
     <Description>Adds Verify (https://github.com/VerifyTests/Verify) support for verifying Brighter (https://www.goparamore.io/)</Description>
-    <NoWarn>CS1591;NU5105</NoWarn>
+    <NoWarn>CS1591;NU5105;NU1608;NU1109</NoWarn>
     <ResolveAssemblyReferencesSilent>true</ResolveAssemblyReferencesSilent>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
