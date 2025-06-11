@@ -8,9 +8,10 @@ Adds [Verify](https://github.com/VerifyTests/Verify) support for verifying [Brig
 
 **See [Milestones](../../milestones?state=closed) for release notes.**
 
-## NuGet package
 
-https://nuget.org/packages/Verify.Brighter/
+## NuGet
+
+ * https://nuget.org/packages/Verify.Brighter
 
 
 ## Usage
