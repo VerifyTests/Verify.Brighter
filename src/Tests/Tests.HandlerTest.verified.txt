@@ -1,8 +1,20 @@
 ﻿{
-  Send: MyCommand: {
-    Property: Some data
+  Send: SendRecord: {
+    Request: {
+      Property: Some data,
+      Id: {
+        Value: Guid_1
+      }
+    },
+    ContinueOnCapturedContext: true
   },
-  Publish: MyEvent: {
-    Property: Some other data
+  Publish: PublishRecord: {
+    Request: {
+      Property: Some other data,
+      Id: {
+        Value: Guid_2
+      }
+    },
+    ContinueOnCapturedContext: true
   }
 }

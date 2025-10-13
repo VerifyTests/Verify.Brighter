@@ -9,6 +9,7 @@ class ClearOutboxRecordConverter :
         writer.WriteMember(record, record.UseBulk, "UseBulk");
         writer.WriteMember(record, record.Args, "Args");
         writer.WriteMember(record, record.Posts, "Posts");
+        writer.WriteMember(record, record.Context, "Context");
         writer.WriteEndObject();
     }
 }

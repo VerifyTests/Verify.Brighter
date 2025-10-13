@@ -2,19 +2,47 @@
 
 public partial class RecordingCommandProcessor
 {
-    public void Send<T>(T command)
-        where T : class, IRequest =>
-        queue.Enqueue(new(CommandType.Send,command));
+    public void Send<TRequest>(TRequest command, RequestContext? requestContext = null)
+        where TRequest : class, IRequest =>
+        queue.Enqueue(new(CommandType.Send, new SendRecord(command, requestContext)));
 
-    public Task SendAsync<T>(T command, bool continueOnCapturedContext = false, Cancel cancel = default)
-        where T : class, IRequest
+    public string Send<TRequest>(DateTimeOffset at, TRequest command, RequestContext? requestContext = null)
+        where TRequest : class, IRequest
     {
-        queue.Enqueue(new(CommandType.Send, command));
-        return Task.CompletedTask;
+        queue.Enqueue(new(CommandType.Send, new SendRecord(command, requestContext)));
+        return $"Send: {command.Id}";
     }
 
-    public IEnumerable<IRequest> Sends =>
+    public string Send<TRequest>(TimeSpan delay, TRequest command, RequestContext? requestContext = null)
+        where TRequest : class, IRequest
+    {
+        queue.Enqueue(new(CommandType.Send, new SendRecord(command, requestContext)));
+        return $"Send: {command.Id}";
+    }
+
+    public Task SendAsync<TRequest>(TRequest command, RequestContext? requestContext = null, bool continueOnCapturedContext = true, Cancel cancel = default)
+        where TRequest : class, IRequest
+    {
+        queue.Enqueue(new(CommandType.Send, new SendRecord(command, requestContext, continueOnCapturedContext)));
+        return Task.FromResult($"Send: {command.Id}");
+    }
+
+    public Task<string> SendAsync<TRequest>(DateTimeOffset at, TRequest command, RequestContext? requestContext = null, bool continueOnCapturedContext = true, Cancel cancel = default)
+        where TRequest : class, IRequest
+    {
+        queue.Enqueue(new(CommandType.Send, new SendRecord(command, requestContext, continueOnCapturedContext, At: at)));
+        return Task.FromResult($"Send: {command.Id}");
+    }
+
+    public Task<string> SendAsync<TRequest>(TimeSpan delay, TRequest command, RequestContext? requestContext = null, bool continueOnCapturedContext = true, Cancel cancel = default)
+        where TRequest : class, IRequest
+    {
+        queue.Enqueue(new(CommandType.Send, new SendRecord(command, requestContext, continueOnCapturedContext, Delay: delay)));
+        return Task.FromResult($"Send: {command.Id}");
+    }
+
+    public IEnumerable<SendRecord> Sends =>
         queue.Where(_ => _.type is CommandType.Send)
             .Select(_ => _.record)
-            .Cast<IRequest>();
+            .Cast<SendRecord>();
 }

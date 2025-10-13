@@ -1,24 +1,46 @@
 ﻿{
-  Send: Response: {
-    Property: Send Value
+  Send: SendRecord: {
+    Request: {
+      Property: Send Value,
+      Id: {
+        Value: Guid_1
+      }
+    }
   },
-  Post: Response: {
-    Property: Post Value
+  Publish: PostRecord: {
+    Request: {
+      Property: Post Value,
+      Id: {
+        Value: Guid_2
+      }
+    }
   },
-  Publish: Response: {
-    Property: Publish Value
+  Publish: PublishRecord: {
+    Request: {
+      Property: Publish Value,
+      Id: {
+        Value: Guid_3
+      }
+    }
   },
-  Deposit: Response: {
-    Property: Publish Value
+  Deposit: DepositPostRecord: {
+    Requests: [
+      {
+        Property: Publish Value,
+        Id: {
+          Value: Guid_4
+        }
+      }
+    ]
   },
-  Clear Outbox: {
-    AmountToClear: 100,
-    MinimumAge: 5000,
-    UseBulk: false
-  },
+  Clear Outbox: {},
   Call: {
-    Request: {},
+    Request: {
+      Id: {
+        Value: Guid_5
+      }
+    },
     ResponseType: Response,
-    TimeOut: 10 ms
+    TimeOut: 01:00:00
   }
 }

@@ -54,8 +54,8 @@ public class AllHandler(RecordingCommandProcessor processor) :
         processor.Post(new Response("Post Value"));
         processor.Publish(new Response("Publish Value"));
         processor.DepositPost(new Response("Publish Value"));
-        processor.ClearOutbox();
-        processor.Call<Call, Response>(new Call(), 10);
+        processor.ClearOutbox([]);
+        processor.Call<Call, Response>(new Call(), null, TimeSpan.FromHours(1));
         return base.HandleAsync(message);
     }
 }
@@ -63,7 +63,8 @@ public class AllHandler(RecordingCommandProcessor processor) :
 public class Call :
     ICall
 {
-    public Guid Id { get; set; }
+    public Id? CorrelationId { get; set; }
+    public Id Id { get; set; } = Id.Random();
     public Activity Span { get; set; } = null!;
     public ReplyAddress ReplyAddress { get; } = null!;
 }

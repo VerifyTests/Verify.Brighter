@@ -1,22 +1,23 @@
 ﻿public record Response(string Property) :
     IResponse
 {
-    public Guid Id { get; set; }
+    public Id Id { get; set; } = Id.Random();
     public Activity? Span { get; set; }
-    public Guid CorrelationId { get; set; }
+    public Id? CorrelationId { get; set; }
 }
 
 public record MyCommand(string Property) :
     IResponse
 {
-    public Guid Id { get; set; }
+    public Id Id { get; set; } = Id.Random();
     public Activity? Span { get; set; }
-    public Guid CorrelationId { get; set; }
+    public Id? CorrelationId { get; set; }
 }
 
 public record MyEvent(string Property) :
     IEvent
 {
-    public Guid Id { get; set; }
+    public Id Id { get; set; } = Id.Random();
     public Activity? Span { get; set; }
+    public Id? CorrelationId { get; set; }
 }
