@@ -1,3 +1,3 @@
 ﻿namespace VerifyTests.Brighter;
 
-public record CallRecord(ICall Request, Type ResponseType, int TimeOutInMilliseconds);
+public record CallRecord(ICall Request, RequestContext? Context, Type ResponseType, TimeSpan? TimeOut);

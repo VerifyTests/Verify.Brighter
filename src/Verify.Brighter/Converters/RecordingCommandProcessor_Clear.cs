@@ -2,30 +2,12 @@
 
 public partial class RecordingCommandProcessor
 {
-    public void ClearOutbox(int amountToClear = 100, int minimumAge = 5000, Dictionary<string, object>? args = null) =>
-        queue.Enqueue(new(CommandType.Clear, new ClearOutboxRecord(amountToClear, minimumAge, false, args)));
+    public void ClearOutbox(Id[] ids, RequestContext? requestContext = null, Dictionary<string, object>? args = null) =>
+        queue.Enqueue(new(CommandType.Clear, new ClearOutboxRecord(ids, requestContext)));
 
-    public Task ClearOutboxAsync(int amountToClear = 100, int minimumAge = 5000, Dictionary<string, object>? args = null)
+    public Task ClearOutboxAsync(IEnumerable<Id> posts, RequestContext? requestContext = null, Dictionary<string, object>? args = null, bool continueOnCapturedContext = true, Cancel cancel = default)
     {
-        queue.Enqueue(new(CommandType.Clear, new ClearOutboxRecord(amountToClear, minimumAge, false, args)));
-        return Task.CompletedTask;
-    }
-
-    public void ClearAsyncOutbox(int amountToClear = 100, int minimumAge = 5000, bool useBulk = false, Dictionary<string, object>? args = null) =>
-        queue.Enqueue(new(CommandType.Clear, new ClearOutboxRecord(amountToClear, minimumAge, useBulk, args)));
-
-    public Task ClearAsyncOutboxAsync(int amountToClear = 100, int minimumAge = 5000, bool useBulk = false, Dictionary<string, object>? args = null)
-    {
-        queue.Enqueue(new(CommandType.Clear, new ClearOutboxRecord(amountToClear, minimumAge, useBulk, args)));
-        return Task.CompletedTask;
-    }
-
-    public void ClearOutbox(params Guid[] posts) =>
-        queue.Enqueue(new(CommandType.Clear, new ClearOutboxRecord(posts)));
-
-    public Task ClearOutboxAsync(IEnumerable<Guid> posts, bool continueOnCapturedContext = false, Cancel cancel = default)
-    {
-        queue.Enqueue(new(CommandType.Clear, new ClearOutboxRecord(posts)));
+        queue.Enqueue(new(CommandType.Clear, new ClearOutboxRecord(posts, requestContext)));
         return Task.CompletedTask;
     }
 }

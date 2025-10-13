@@ -87,15 +87,27 @@ Will result in:
 <a id='snippet-Tests.HandlerTest.verified.txt'></a>
 ```txt
 {
-  Send: MyCommand: {
-    Property: Some data
+  Send: SendRecord: {
+    Request: {
+      Property: Some data,
+      Id: {
+        Value: Guid_1
+      }
+    },
+    ContinueOnCapturedContext: true
   },
-  Publish: MyEvent: {
-    Property: Some other data
+  Publish: PublishRecord: {
+    Request: {
+      Property: Some other data,
+      Id: {
+        Value: Guid_2
+      }
+    },
+    ContinueOnCapturedContext: true
   }
 }
 ```
-<sup><a href='/src/Tests/Tests.HandlerTest.verified.txt#L1-L8' title='Snippet source file'>snippet source</a> | <a href='#snippet-Tests.HandlerTest.verified.txt' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Tests.HandlerTest.verified.txt#L1-L20' title='Snippet source file'>snippet source</a> | <a href='#snippet-Tests.HandlerTest.verified.txt' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 

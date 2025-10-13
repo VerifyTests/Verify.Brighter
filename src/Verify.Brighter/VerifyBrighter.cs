@@ -21,6 +21,10 @@ public static class VerifyBrighter
     [
         new RecordingCommandProcessorConverter(),
         new ClearOutboxRecordConverter(),
-        new CallRecordConverter()
+        new CallRecordConverter(),
+        new SendRecordConverter(),
+        new PublishRecordConverter(),
+        new PostRecordConverter(),
+        new DepositPostRecordConverter()
     ];
 }
