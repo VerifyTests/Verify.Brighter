@@ -1,7 +1,7 @@
 # <img src="/src/icon.png" height="30px"> Verify.Brighter
 
 [![Discussions](https://img.shields.io/badge/Verify-Discussions-yellow?svg=true&label=)](https://github.com/orgs/VerifyTests/discussions)
-[![Build status](https://img.shields.io/appveyor/build/SimonCropp/Verify-Brighter)](https://ci.appveyor.com/project/SimonCropp/Verify-Brighter)
+[![Build status](https://github.com/VerifyTests/Verify.Brighter/actions/workflows/build.yml/badge.svg)](https://github.com/VerifyTests/Verify.Brighter/actions/workflows/build.yml)
 [![NuGet Status](https://img.shields.io/nuget/v/Verify.Brighter.svg)](https://www.nuget.org/packages/Verify.Brighter/)
 
 Adds [Verify](https://github.com/VerifyTests/Verify) support for verifying [Brighter](https://www.goparamore.io/).<!-- singleLineInclude: intro. path: /docs/intro.include.md -->
